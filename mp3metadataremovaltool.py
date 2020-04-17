@@ -14,7 +14,10 @@ def deleteAllMetadata(path):
     folders = []
     for filename in os.listdir(path):
         fname = os.path.join(path, filename)
-        
+
+        #Code block inspired/remixed by 
+        # https://code.activestate.com/recipes/577139-remove-id3-tags-from-mp3-files/
+        # Licensed under MIT 
         if fname.lower().endswith(".mp3"):
             mp3 = MP3(fname)
             
