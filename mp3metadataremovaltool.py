@@ -11,7 +11,6 @@ else:
 
 
 def deleteAllMetadata(path):
-    folders = []
     for filename in os.listdir(path):
         fname = os.path.join(path, filename)
 
@@ -30,11 +29,8 @@ def deleteAllMetadata(path):
                 
         elif os.path.isdir(f"{path}\\{filename}"):
             print(f"found folder {filename}")
-            folders.append(f"{path}\\{filename}")
-        
-    for folder in folders:
-        Thread(target = deleteAllMetadata, args = (folder,)).start()
-        
+            Thread(target = deleteAllMetadata, args = (f"{path}\\{filename}",)).start()
+
 
 if __name__ == "__main__":
     deleteAllMetadata(FILE_PATH)
